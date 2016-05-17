@@ -1,0 +1,3 @@
+# -d src ou -d src/main/java ou ...
+wsimport -d src/main/java -keep http://localhost:8282/calculateurFinancier?wsdl
+echo "fin"; read fin

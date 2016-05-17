@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:view>
+<h:form>
+	amount : <h:inputText value="#{convMBean.amount}"/> (ex: 200.0)<br/>
+	source currency:<h:inputText value="#{convMBean.sourceCurrencyCode}"/>(ex: EUR)<br/>
+	target currency:<h:inputText value="#{convMBean.targetCurrencyCode}"/>(ex: USD , GBP , JPY)<br/>
+	<h:commandButton value="convert" action="#{convMBean.doConvert}" /><br/>
+	result :<h:outputText value="#{convMBean.result}"/>
+</h:form>
+</f:view>
+</html>

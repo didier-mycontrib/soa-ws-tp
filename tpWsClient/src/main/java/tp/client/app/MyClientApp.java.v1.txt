@@ -1,0 +1,42 @@
+package tp.client.app;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import tp.client.util.MyPropertiesUtil;
+import tp.data.ResCalculTva;
+import tp.ws.service.CalculateurFinancier;
+import tp.ws.service.CalculateurFinancierImplService;
+
+public class MyClientApp {
+
+	public static void main(String[] args) {
+		//récupérer l'URL  WSDL paramétrable dans le fichier wsUrl.properties:
+		try {
+			java.util.Properties props = MyPropertiesUtil.loadProperties("wsUrl.properties");
+			String wsdlUrlAsString = props.getProperty("wsdl.url");
+			URL wsdlURL = new URL(wsdlUrlAsString);
+		
+		
+		// initialiser le "proxy" vers le WS distant CalculateurFinancier 
+		// en s'appuyant sur le code généré par wsimport
+		// InterfaceWS proxyWS = (new .....Service).get....Port(); 
+		CalculateurFinancier calculateurFinancier = 
+				(new CalculateurFinancierImplService(wsdlURL)).getCalculateurFinancierImplPort();
+		
+		//appeler les méthodes du services et afficher les résultats sur la console (sortie standard):
+		
+		ResCalculTva resCalculTva = calculateurFinancier.calculerTva(200.0, 20.0);
+		System.out.println("Pour ht=" + resCalculTva.getHt() + " et un taux=" + resCalculTva.getTaux());
+		System.out.println("tva=" + resCalculTva.getTva() + " ttc=" + resCalculTva.getTtc());
+		
+		double mensualite = calculateurFinancier.mensualiteConstante(1000.0, 24, 5.0 / 12);
+		System.out.println("Pour rembourser un montant emprunte de 1000 euros sur 24 mois ");
+		System.out.println("à un taux d'interet de 5% par an , les mensualites sont de " + mensualite );
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

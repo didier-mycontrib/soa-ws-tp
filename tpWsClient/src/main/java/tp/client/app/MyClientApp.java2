@@ -1,0 +1,14 @@
+package tp.client.app;
+
+public class MyClientApp {
+
+	public static void main(String[] args) {
+		// initialiser le "proxy" vers le WS distant CalculateurFinancier 
+		// en s'appuyant sur le code généré par wsimport
+		// InterfaceWS proxyWS = (new .....Service).get....Port(); 
+		
+		//appeler les méthodes du services et afficher les résultats sur la console (sortie standard):
+
+	}
+
+}
