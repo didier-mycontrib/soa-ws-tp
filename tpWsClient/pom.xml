@@ -6,10 +6,34 @@
   
   <properties>
    <org.apache.cxf.version>3.0.6</org.apache.cxf.version>
+    <org.glassfish.jersey.version>2.22.1</org.glassfish.jersey.version>
   </properties>
   
   <dependencies>
-  
+    <dependency>
+  		<groupId>org.glassfish.jersey.core</groupId>
+ 		 <artifactId>jersey-client</artifactId>
+  		<version>${org.glassfish.jersey.version}</version>
+	</dependency>
+	
+	<dependency>
+    <groupId>org.glassfish.jersey.media</groupId>
+    <artifactId>jersey-media-json-jackson</artifactId>
+    <version>${org.glassfish.jersey.version}</version>
+</dependency>
+
+<dependency>
+    <groupId>org.glassfish.jersey.ext</groupId>
+    <artifactId>jersey-proxy-client</artifactId>
+    <version>${org.glassfish.jersey.version}</version>
+</dependency>
+
+<dependency>
+	<groupId>commons-codec</groupId>
+	<artifactId>commons-codec</artifactId>
+	<version>1.10</version>
+</dependency>
+
    <dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-core</artifactId>
