@@ -1,5 +1,8 @@
 package tp.currency.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.jws.WebService;
@@ -56,6 +59,15 @@ public class CurrencyServiceImpl implements CurrencyService {
 		_Currency sourceCurr = currencyDao.findByCode(sourceCurrencyCode);
 		_Currency targetCurr = currencyDao.findByCode(targetCurrencyCode);
 		return amount * targetCurr.getExchange_rate() / sourceCurr.getExchange_rate();
+	}
+
+	@Override
+	public List<Currency> findAll() {
+		List<Currency> currList = new ArrayList<Currency>();
+		for(_Currency c : currencyDao.findAll()){
+			currList.add(entityToDto(c));
+		}
+		return currList;
 	}
 
 }

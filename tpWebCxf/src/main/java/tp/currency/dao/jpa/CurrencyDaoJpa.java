@@ -1,5 +1,7 @@
 package tp.currency.dao.jpa;
 
+import java.util.List;
+
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -41,6 +43,11 @@ public class CurrencyDaoJpa implements CurrencyDao {
 	@Override
 	public void removeCurrency(_Currency c) {
 		em.remove(c);
+	}
+
+	@Override
+	public List<_Currency> findAll() {
+		return em.createQuery("SELECT c FROM _Currency c ",_Currency.class).getResultList();
 	}
 
 }
